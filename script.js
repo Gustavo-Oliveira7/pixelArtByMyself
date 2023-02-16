@@ -29,3 +29,15 @@ for (let index = 0; index < 3; index +=1 ) {
 };
 
 // main
+for (let index = 0; index < 5; index +=1 ) {
+    const mainSquare = document.createElement('ul');
+    mainSquare.className = 'ulMain';
+    mainSquare.id = `square${index}`
+    divMain.appendChild(mainSquare);
+    for (let index = 0; index < 5; index += 1) {
+      const mainSquareChild = document.createElement('p')
+      mainSquareChild.className = 'mainSquare'
+      mainSquareChild.id = `${index}`
+      mainSquare.appendChild(mainSquareChild);
+    }
+}

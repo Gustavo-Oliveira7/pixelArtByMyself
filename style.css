@@ -21,3 +21,16 @@
   height: 50px;
   margin-left: 10px;
 }
+
+.ulMain {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.mainSquare {
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  margin: 3px 3px;
+}
