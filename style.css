@@ -1,5 +1,12 @@
+.divFullDoc {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .titlePixels {
   margin: 0;
+  text-align: center;
 }
 
 .ulHeader {
