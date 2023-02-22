@@ -25,15 +25,22 @@ divHeader.appendChild(ulHeader);
 ulHeader.appendChild(blackSquare);
 
 const standardColorList = ['red', 'green', 'blue'];
+const getlocalItens = getLocal();
 for (let index = 0; index < 3; index +=1 ) {
 	const headerSquare = document.createElement('p');
 	headerSquare.className = 'headerSquare';
-	headerSquare.style.backgroundColor = standardColorList[index];
-	ulHeader.appendChild(headerSquare);
+	if( getlocalItens.length > 0) {
+		headerSquare.style.backgroundColor = getlocalItens[index];
+		ulHeader.appendChild(headerSquare);
+	} else {
+		headerSquare.style.backgroundColor = standardColorList[index];
+		ulHeader.appendChild(headerSquare);
+	}
 }
 
 // main
 const randomColorButton = document.createElement('button');
+randomColorButton.id = 'button';
 randomColorButton.innerHTML = 'RANDOM';
 divMain.appendChild(randomColorButton);
 
@@ -73,6 +80,7 @@ divHeader.addEventListener('click', (event) => {
 
 const cleanButton = document.createElement('button');
 cleanButton.innerHTML = 'CLEAR';
+cleanButton.id = 'button';
 divMain.appendChild(cleanButton);
 
 cleanButton.addEventListener('click', () => {
@@ -89,10 +97,26 @@ function randomRGBColor () {
 	return `rgb(${r}, ${g}, ${b})`;
 }
 
+function getLocal() {
+	const getItens = localStorage.getItem('colors');
+	return getItens ? JSON.parse(getItens) : [];
+}
+
+function setLocalFunc (color) {
+	// localStorage.setItem('colors');
+	// const getItens = getLocal();
+	// const newLocal = [...getItens, color];
+	localStorage.setItem('colors',JSON.stringify(color));
+	// console.log(getItens);
+}
+
+
 randomColorButton.addEventListener('click', () => {
+	let colorList = [];
 	const allHeader = document.querySelectorAll('.headerSquare');
 	for(let index = 1; index < 4; index += 1) {
 		allHeader[index].style.backgroundColor = randomRGBColor();
+		colorList.push(allHeader[index].style.backgroundColor);
 	}
-	console.log(randomRGBColor());
+	setLocalFunc(colorList);
 });
