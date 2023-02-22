@@ -19,14 +19,15 @@ const ulHeader = document.createElement('ul');
 ulHeader.className = 'ulHeader';
 const blackSquare = document.createElement('p');
 blackSquare.style.backgroundColor = 'black';
-blackSquare.className = 'blackSquare';
+blackSquare.className = 'headerSquare';
 divHeader.appendChild(ulHeader);
 ulHeader.appendChild(blackSquare);
 
+const standardColorList = ['red', 'green', 'blue'];
 for (let index = 0; index < 3; index +=1 ) {
 	const headerSquare = document.createElement('p');
 	headerSquare.className = 'headerSquare';
-	headerSquare.style.backgroundColor = 'white';
+	headerSquare.style.backgroundColor = standardColorList[index];
 	ulHeader.appendChild(headerSquare);
 }
 
@@ -46,7 +47,21 @@ for (let index = 0; index < 5; index +=1 ) {
 	}
 }
 
-divMain.addEventListener('click', () => {
-	const elementClick = event.srcElement;
-	elementClick.style.backgroundColor = 'black';
+
+divMain.addEventListener('click', (event) => {
+	const elementClick = event.target;
+	if (elementClick.className == 'mainSquare'){
+		elementClick.style.backgroundColor = 'black';
+	}
+});
+
+divHeader.addEventListener('click', (event) => {
+	const elementClick = event.target;
+	if(elementClick.className == 'headerSquare') {
+		for(let index = 0; index < 4; index += 1) {
+			const allHeader = document.querySelectorAll('.headerSquare')[index];
+			allHeader.id = '';
+			elementClick.id = 'selected';
+		}
+	}
 });
