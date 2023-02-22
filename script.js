@@ -19,6 +19,7 @@ const ulHeader = document.createElement('ul');
 ulHeader.className = 'ulHeader';
 const blackSquare = document.createElement('p');
 blackSquare.style.backgroundColor = 'black';
+blackSquare.id = 'selected';
 blackSquare.className = 'headerSquare';
 divHeader.appendChild(ulHeader);
 ulHeader.appendChild(blackSquare);
@@ -51,7 +52,9 @@ for (let index = 0; index < 5; index +=1 ) {
 divMain.addEventListener('click', (event) => {
 	const elementClick = event.target;
 	if (elementClick.className == 'mainSquare'){
-		elementClick.style.backgroundColor = 'black';
+		const getSelectedColor = document.getElementById('selected').style.backgroundColor;
+		console.log(getSelectedColor);
+		elementClick.style.backgroundColor = getSelectedColor;
 	}
 });
 
