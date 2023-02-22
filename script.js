@@ -53,7 +53,6 @@ divMain.addEventListener('click', (event) => {
 	const elementClick = event.target;
 	if (elementClick.className == 'mainSquare'){
 		const getSelectedColor = document.getElementById('selected').style.backgroundColor;
-		console.log(getSelectedColor);
 		elementClick.style.backgroundColor = getSelectedColor;
 	}
 });
@@ -67,4 +66,15 @@ divHeader.addEventListener('click', (event) => {
 			elementClick.id = 'selected';
 		}
 	}
+});
+
+const cleanButton = document.createElement('button');
+cleanButton.innerHTML = 'CLEAR';
+divMain.appendChild(cleanButton);
+
+cleanButton.addEventListener('click', () => {
+	const getAll = document.querySelectorAll('.mainSquare');
+	getAll.forEach((element) => {
+		element.style.backgroundColor = 'white';
+	});
 });
