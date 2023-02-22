@@ -56,3 +56,7 @@
 #selected {
   transform: scale(1.2);
 }
+
+.divMain {
+  text-align: center;
+}

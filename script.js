@@ -33,6 +33,10 @@ for (let index = 0; index < 3; index +=1 ) {
 }
 
 // main
+const randomColorButton = document.createElement('button');
+randomColorButton.innerHTML = 'RANDOM';
+divMain.appendChild(randomColorButton);
+
 for (let index = 0; index < 5; index +=1 ) {
 	const mainSquare = document.createElement('ul');
 	mainSquare.className = 'ulMain';
@@ -47,7 +51,6 @@ for (let index = 0; index < 5; index +=1 ) {
 		mainSquare.appendChild(mainSquareChild);
 	}
 }
-
 
 divMain.addEventListener('click', (event) => {
 	const elementClick = event.target;
@@ -77,4 +80,19 @@ cleanButton.addEventListener('click', () => {
 	getAll.forEach((element) => {
 		element.style.backgroundColor = 'white';
 	});
+});
+
+function randomRGBColor () {
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
+	return `rgb(${r}, ${g}, ${b})`;
+}
+
+randomColorButton.addEventListener('click', () => {
+	const allHeader = document.querySelectorAll('.headerSquare');
+	for(let index = 1; index < 4; index += 1) {
+		allHeader[index].style.backgroundColor = randomRGBColor();
+	}
+	console.log(randomRGBColor());
 });
